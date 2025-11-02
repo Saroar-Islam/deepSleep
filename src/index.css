@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap");
+
+@import "tailwindcss";
+
+/* --- CSS Reset Layer --- */
+@layer base {
+    /* 1. Global box sizing */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+        font-family: sans-serif;
+    }
+
+    /* 2. Remove default margins/paddings */
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    figure,
+    blockquote,
+    dl,
+    dd {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 3. Body defaults */
+    body {
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        background-color: var(--color-CosmicBlack-blue);
+        color: white;
+        overflow-x: hidden;
+    }
+
+    /* 4. Reset lists */
+    ul,
+    ol {
+        list-style: none;
+        padding: 0;
+    }
+
+    /* 5. Reset links */
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* 6. Images easier to work with */
+    img,
+    picture {
+        max-width: 100%;
+        display: block;
+    }
+}
+
+/* --- Theme Tokens (CSS custom props) ---
+   These are just variables; Tailwind's color
+   utilities will still be defined in tailwind.config.js
+*/
+@theme {
+    --color-CosmicBlack-blue: #060c1f; /* Cosmic Black-Blue */
+    --color-primaryColor: #9cb3ff; /* Fixed spelling from primay → primary */
+    --color-secondaryColor: #789abc;
+    --font-playfair: "Playfair Display", serif;
+    --font-montserrat: "Montserrat", sans-serif;
+    --font-quicksand: "Quicksand", sans-serif;
+}
+
+/* --- Utilities --- */
+@layer utilities {
+    .print-hidden {
+        @apply print:hidden;
+    }
+    .print-show {
+        @apply hidden print:block;
+    }
+}
+
+/* -----custom components / custom classes ------- */
+@layer components {
+    .bgCustom-1 {
+        @apply bg-gradient-to-br from-[#3a3d5c] via-[#1f2235] to-[#3a3d5c];
+    }
+
+    .bgCustom-2 {
+        @apply bg-gradient-to-br from-[#323c5b] via-gray-950 to-[#191e2c];
+    }
+    .bgCustom-2a {
+        @apply bg-gradient-to-br from-[#323c5b] via-[#191e2c] to-[#191e2c];
+    }
+
+    .bgCustom-3 {
+        @apply bg-gradient-to-br from-[#1b1f3b] via-[#2c3e50] to-[#121826];
+    }
+
+    .bgCustom-4 {
+        @apply bg-gradient-to-br from-[#194259] via-[#5d6871] to-[#2c3e50];
+    }
+
+    .neon-glow {
+        filter: drop-shadow(0 0 6px #3b82f6); /* Tailwind blue glow */
+    }
+
+    .nav-text {
+        color: rgb(245, 244, 244);
+        transition: color 0.3s ease;
+    }
+
+    .nav-text:hover {
+        color: #00a8e0;
+        text-shadow: 0 0 4px #00838d, 0 0 8px #00838d;
+        transition: color 0.3s ease;
+    }
+
+    .neon-text {
+        color: #00f0ff;
+        text-shadow: 0 0 4px #00838d, 0 0 8px #00838d;
+    }
+
+    .nav-bg {
+        @apply bg-gradient-to-r from-[#0a0a23] via-[#1e2a4f] to-[#0a0a23] 
+         shadow-[0_0_10px_#3399ff] 
+         border-b border-[#3399ff]/30;
+    }
+
+    .card-cosmic-glow {
+        @apply bg-gradient-to-br from-[#182244] via-[#0e1a33] to-[#172b42] shadow-[0_0_20px_rgba(14,26,51,0.5)] p-6 rounded-xl;
+    }
+
+    .card-cosmic-glow-border {
+        @apply relative p-6 rounded-xl bg-gradient-to-br from-[#435279] via-[#0e1a33] to-[#172b42] shadow-[0_0_20px_rgba(14,26,51,0.5)];
+    }
+
+    .card-cosmic-glow-border::before {
+        content: "";
+        @apply absolute -inset-[2px] rounded-xl;
+        background: linear-gradient(to right, #485788, #0e1a33, #0e1a33, #0e1a33, #455380);
+        background-size: 400% 400%;
+        animation: gradient-move 5s ease infinite;
+        z-index: -1;
+    }
+
+    @keyframes gradient-move {
+        0%,
+        100% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+    }
+}
+
+.custom-swiper .swiper-pagination {
+    position: relative !important;
+    margin-top: 60px; /* or whatever spacing you need */
+}
+.custom-swiper .swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    background-color: #8d6464 !important;
+    transition: all 0.4s ease !important;
+}
+
+.custom-swiper .swiper-pagination-bullet-active {
+    width: 26px !important;
+    height: 10px !important;
+    background-color: #6c44c2 !important;
+    border-radius: 5px !important;
+}
