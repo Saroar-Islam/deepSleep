@@ -4,7 +4,7 @@ import Testimonials from "./components/Testimonials";
 import CallToAction from "./components/CallToAction";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import Price from "./components/Price.Jsx";
+import Price from "./components/Price";
 import Tracker from "./components/Tracker";
 
 export default function App() {
